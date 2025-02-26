@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('project_applicants', function (Blueprint $table) {
             $table->id();
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->unsignedBigInteger('freelancer_id');
+            $table->text('message');
+            $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
+
+
+            // references freelancer_id from users table
+            $table->foreign('freelancer_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
