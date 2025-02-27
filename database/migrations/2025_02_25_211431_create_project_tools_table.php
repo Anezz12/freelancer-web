@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('project_tools', function (Blueprint $table) {
             $table->id();
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->foreign('tool_id')->references('id')->on('tools')->onDelete('cascade');
+           $table->foreignId('project_id')->constrained()->onDelete('cascade');
+           $table->foreignId('tool_id')->constrained()->onDelete('cascade');
+
 
             $table->softDeletes();
             $table->timestamps();

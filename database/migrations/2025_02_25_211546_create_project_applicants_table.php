@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('project_applicants', function (Blueprint $table) {
             $table->id();
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('freelancer_id');
             $table->text('message');
             $table->string('status');
